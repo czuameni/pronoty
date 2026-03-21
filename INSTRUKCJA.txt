@@ -1,0 +1,47 @@
+# Instrukcja – Pronoty
+
+## Uruchomienie aplikacji
+
+pip install -r requirements.txt  
+python app.py
+
+Przy pierwszym uruchomieniu ustaw hasło główne.
+
+---
+
+## Funkcje
+
+- Tworzenie notatek – przycisk "New Note"
+- Usuwanie – przycisk "Delete"
+- Edycja – automatyczna (auto-save)
+- Kategorie – sidebar + dropdown
+- Wyszukiwanie – pole "Search"
+- Przypinanie – prawy klik → Pin
+
+---
+
+## Budowanie EXE
+
+pyinstaller --noconfirm --onefile --windowed --icon=assets/pronoty.ico app.py
+
+Plik znajdziesz w folderze:
+
+dist/app.exe
+
+---
+
+## Bezpieczeństwo
+
+- Hasło przechowywane jako hash (bcrypt)
+- Notatki szyfrowane (Fernet + PBKDF2)
+- Dane przechowywane lokalnie
+
+---
+
+## Uwaga
+
+Folder `data/` zawiera:
+- bazę danych
+- pliki bezpieczeństwa
+
+Nie udostępniaj tych plików.

@@ -1,0 +1,111 @@
+QMainWindow {
+    background-color: #1e1e2e;
+}
+
+QListWidget {
+    background-color: #2a2a3c;
+    border: none;
+    padding: 8px;
+    color: white;
+    outline: none;
+}
+
+QListWidget::item {
+    padding: 8px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+}
+
+QListWidget::item:selected {
+    background-color: #4a4a6a;
+}
+
+QListWidget::item:hover {
+    background-color: #3a3a5a;
+}
+
+QTextEdit {
+    background-color: #1e1e2e;
+    color: white;
+    border: none;
+    padding: 15px;
+}
+
+QLineEdit {
+    background-color: #2a2a3c;
+    padding: 8px;
+    border-radius: 6px;
+    color: white;
+}
+
+QScrollBar:vertical {
+    background: #1e1e2e;
+    width: 8px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #4a4a6a;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #6a6a8a;
+}
+
+QListWidget#Sidebar {
+    background-color: #2a2a3c;
+    border: none;
+    padding: 10px;
+    color: white;
+}
+
+QListWidget#Sidebar::item {
+    padding: 6px;
+    margin-bottom: 2px;
+    border-radius: 4px;
+}
+
+QListWidget#Sidebar::item:selected {
+    background-color: #3a3a5a;
+}
+
+QListWidget#Sidebar::item:hover {
+    background-color: #343454;
+}
+
+/* 🔥 PRIMARY BUTTON */
+QPushButton#PrimaryButton {
+    background-color: #5a5af0;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+QPushButton#PrimaryButton:hover {
+    background-color: #7070ff;
+}
+
+QPushButton#PrimaryButton:pressed {
+    background-color: #4848d0;
+}
+
+/* 🔥 DANGER BUTTON */
+QPushButton#DangerButton {
+    background-color: #e04f5f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+QPushButton#DangerButton:hover {
+    background-color: #ff6b7a;
+}
+
+QPushButton#DangerButton:pressed {
+    background-color: #c43d4d;
+}
