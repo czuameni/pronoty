@@ -1,28 +1,22 @@
-# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.sqlite3
 
-# Virtual env
 venv/
 .env/
 
-# PyInstaller
 build/
 dist/
 *.spec
 
-# Data (important - do not commit user data)
 data/notes.db
 data/crypto_salt.bin
 data/master.hash
 
-# OS
 .DS_Store
 Thumbs.db
 
-# IDE
 .vscode/
 .idea/
