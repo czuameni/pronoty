@@ -74,7 +74,7 @@ QListWidget#Sidebar::item:hover {
     background-color: #343454;
 }
 
-/* 🔥 PRIMARY BUTTON */
+/* PRIMARY BUTTON */
 QPushButton#PrimaryButton {
     background-color: #5a5af0;
     color: white;
@@ -92,7 +92,7 @@ QPushButton#PrimaryButton:pressed {
     background-color: #4848d0;
 }
 
-/* 🔥 DANGER BUTTON */
+/* DANGER BUTTON */
 QPushButton#DangerButton {
     background-color: #e04f5f;
     color: white;
