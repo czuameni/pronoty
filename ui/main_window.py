@@ -25,13 +25,11 @@ class MainWindow(QMainWindow):
         central = QWidget()
         layout = QHBoxLayout()
 
-        # sidebar
         self.sidebar = QListWidget()
         self.sidebar.addItems(["All Notes", "Work", "Private"])
         self.sidebar.setFixedWidth(120)
         self.sidebar.clicked.connect(self.filter_by_category)
 
-        # list
         self.notes_list = QListWidget()
         self.notes_list.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.notes_list.clicked.connect(self.display_note)
@@ -39,21 +37,18 @@ class MainWindow(QMainWindow):
         self.notes_list.setContextMenuPolicy(Qt.CustomContextMenu)
         self.notes_list.customContextMenuRequested.connect(self.open_context_menu)
 
-        # buttons
         self.new_btn = QPushButton("New Note")
         self.new_btn.clicked.connect(self.create_note)
 
         self.delete_btn = QPushButton("Delete")
         self.delete_btn.clicked.connect(self.delete_note)
 
-        # editor
         self.editor = QTextEdit()
         self.title_input = QLineEdit()
         self.category_dropdown = QComboBox()
         self.category_dropdown.addItems(["All Notes", "Work", "Private"])
         self.category_dropdown.currentTextChanged.connect(self.change_category)
 
-        # autosave
         self.save_timer = QTimer()
         self.save_timer.setInterval(1500)
         self.save_timer.setSingleShot(True)
@@ -62,12 +57,10 @@ class MainWindow(QMainWindow):
         self.editor.textChanged.connect(self.trigger_autosave)
         self.title_input.textChanged.connect(self.trigger_autosave)
 
-        # search
         self.search = QLineEdit()
         self.search.setPlaceholderText("Search...")
         self.search.textChanged.connect(self.search_notes)
 
-        # layout
         left = QVBoxLayout()
 
         btns = QHBoxLayout()
@@ -93,9 +86,6 @@ class MainWindow(QMainWindow):
         central.setLayout(layout)
         self.setCentralWidget(central)
 
-    # -------------------------
-    # DATA / LIST
-    # -------------------------
 
     def populate_list(self, notes):
         self.notes_list.clear()
@@ -113,10 +103,6 @@ class MainWindow(QMainWindow):
     def load_notes(self):
         self.notes = self.notes_manager.get_notes()
         self.populate_list(self.notes)
-
-    # -------------------------
-    # DISPLAY
-    # -------------------------
 
     def display_note(self):
         item = self.notes_list.currentItem()
@@ -137,10 +123,6 @@ class MainWindow(QMainWindow):
 
         self.is_loading = False
 
-    # -------------------------
-    # CREATE
-    # -------------------------
-
     def create_note(self):
         category = "default"
 
@@ -156,10 +138,6 @@ class MainWindow(QMainWindow):
         if last >= 0:
             self.notes_list.setCurrentRow(last)
             self.display_note()
-
-    # -------------------------
-    # AUTOSAVE
-    # -------------------------
 
     def trigger_autosave(self):
         if self.is_loading or self.current_note_id is None:
@@ -188,10 +166,6 @@ class MainWindow(QMainWindow):
         if item:
             item.setText(title)
 
-    # -------------------------
-    # SEARCH / FILTER
-    # -------------------------
-
     def search_notes(self, text):
         if not text:
             self.filtered_notes = None
@@ -219,10 +193,6 @@ class MainWindow(QMainWindow):
         self.filtered_notes = notes
         self.populate_list(notes)
 
-    # -------------------------
-    # DELETE
-    # -------------------------
-
     def delete_note(self):
         if self.current_note_id is None:
             return
@@ -241,10 +211,6 @@ class MainWindow(QMainWindow):
         self.load_notes()
         self.editor.clear()
         self.title_input.clear()
-
-    # -------------------------
-    # CONTEXT MENU
-    # -------------------------
 
     def open_context_menu(self, pos):
         item = self.notes_list.itemAt(pos)
@@ -275,10 +241,6 @@ class MainWindow(QMainWindow):
         elif action == delete:
             self.delete_note()
 
-    # -------------------------
-    # RENAME
-    # -------------------------
-
     def handle_rename(self, item):
         note_id = item.data(Qt.UserRole)
         note = next((n for n in self.notes if n["id"] == note_id), None)
@@ -295,10 +257,6 @@ class MainWindow(QMainWindow):
         )
 
         note["title"] = new_title
-
-    # -------------------------
-    # CATEGORY CHANGE
-    # -------------------------
 
     def change_category(self, category):
         if self.current_note_id is None:
